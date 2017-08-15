@@ -10,7 +10,7 @@ public class DungeonManager : MonoBehaviour
 
     void Awake()
     {
-        Random.InitState(23431);
+        UnityEngine.Random.InitState(23431);
         var map = new int[m_Width * m_Height];
         for (int y = 0; y < m_Height; y++)
         {
@@ -28,9 +28,9 @@ public class DungeonManager : MonoBehaviour
                     tile |= 4;
                 if (py)
                     tile |= 8;
-                if (x + 1 < m_Width && Random.value > 0.5f)
+                if (x + 1 < m_Width && UnityEngine.Random.value > 0.5f)
                     tile |= 1;
-                if (y + 1 < m_Height && Random.value > 0.5f)
+                if (y + 1 < m_Height && UnityEngine.Random.value > 0.5f)
                     tile |= 2;
 
                 map[x + y * m_Width] = tile;

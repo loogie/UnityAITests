@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Composite: Behavior {
-
-    protected Behavior parent;
+    
     protected Behavior currentChild;
     protected List<Behavior> children;
 
@@ -32,11 +31,22 @@ public abstract class Composite: Behavior {
         }
     }
 
+    public override void reset()
+    {
+        currentChild = children[0];
+        Debug.Log("Reset to " + currentChild.name);
+    }
+
     public override void Update()
     {
         if (this.currentChild != null)
         {
             this.currentChild.Update();
         }
+    }
+
+    public override void Resolve(bool result)
+    {
+        currentChild.reset();
     }
 }

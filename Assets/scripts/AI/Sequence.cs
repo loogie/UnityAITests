@@ -12,6 +12,8 @@ public class Sequence: Composite {
 
     public override void Resolve(bool result)
     {
+        base.Resolve(result);
+
         int index = children.IndexOf(currentChild) + 1;
         if (result == true && index < children.Count)
         {
@@ -21,7 +23,7 @@ public class Sequence: Composite {
         else
         {
             Debug.Log("Resolved: " + name);
-            parent.Resolve(result);
+            this.parent.Resolve(result);
         }
     }
 }

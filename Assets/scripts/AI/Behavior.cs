@@ -13,6 +13,7 @@ public abstract class Behavior {
         this.parent = parent;
     }
 
-    public abstract void Update();
+    public virtual void reset() { }
+    public virtual void Update() { }
     public abstract void Resolve(bool result);
 }

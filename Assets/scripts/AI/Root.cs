@@ -3,17 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Decorator: Behavior {
+public class Root: Behavior {
 
     private Behavior child;
 
-    public Decorator(string name, Behavior parent):base(name, parent)
+    public Root(string name):base(name, null)
     {
-    }
-
-	public Decorator(string name, Behavior parent, Behavior child):base(name, parent)
-    {
-        this.child = child;
     }
 
     public void addChild(Behavior child)
@@ -31,7 +26,7 @@ public class Decorator: Behavior {
 
     public override void Resolve(bool result)
     {
-        this.parent.Resolve(result);
+        Debug.Log("Root has resolved to " + result);
         this.child.reset();
     }
 }
